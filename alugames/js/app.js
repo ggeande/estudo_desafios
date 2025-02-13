@@ -1,17 +1,19 @@
 function alterarStatus(id){
-    let elemento = document.querySelector('#game-'+ id +' .dashboard__item__button');
-    trocaClass(elemento);
+    let elemento = document.getElementById('game-'+ id);
+    let imagem = elemento.querySelector('.dashboard__item__img');
+    let botao = elemento.querySelector('.dashboard__item__button');
+    trocarStatus(imagem, botao);
 }
 
-function trocaClass(elemento){
-    
-    if (elemento.classList.contains('dashboard__item__button--return')) {
-        elemento.className = 'dashboard__item__button';
-        elemento.innerHTML = 'Alugar';
-        
-    }else{
-        elemento.className = 'dashboard__item__button dashboard__item__button--return';
-        elemento.innerHTML = 'Devolver';
-    }
+function trocarStatus(img, bot){
 
+    if (bot.textContent == 'Alugar') {
+        bot.className = 'dashboard__item__button dashboard__item__button--return';
+        img.className = 'dashboard__item__img dashboard__item__img--return';
+        bot.innerHTML = 'Devolver';
+    } else {
+        bot.className = 'dashboard__item__button';
+        img.className = 'dashboard__item__img';
+        bot.innerHTML = 'Alugar';
+    }
 }
